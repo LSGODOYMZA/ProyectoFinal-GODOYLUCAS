@@ -1,0 +1,25 @@
+{% extends 'padre.html' %}
+
+{% block title %}
+    <title>Resultado de tu Busqueda</title>      
+{% endblock title %}
+
+
+{% block contenido_que_cambia %}
+      <h1>Resultado de tu Busqueda:</h1>   
+      {% if resultados %}
+  <ul>
+    {% for articulo in resultados %}
+      {{ articulo.Nombre }} 
+      <br>
+      Ciudad: {{articulo.Ciudad}}
+      <br>
+      Provincia: {{articulo.Provincia}}
+      <br>
+      Categoria: {{articulo.Categoria}}
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No se encontraron resultados.</p>
+{% endif %}
+{% endblock contenido_que_cambia %}

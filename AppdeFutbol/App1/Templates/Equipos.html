@@ -1,0 +1,51 @@
+{% extends 'padre.html' %}
+
+{% block title %}
+    <title>Equipos</title>      
+{% endblock title %}
+
+
+{% block contenido_que_cambia %}
+
+
+      <h1>Estos son los Equipos del Futbol Argentino:</h1> 
+      <table class="custom-table estilo-tabla">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Ciudad</th>
+                <th>Provincia</th>
+                <th>Categoria</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for equipo in equipos %}
+                <tr>
+                    <td>
+                        {{ equipo.Nombre }}
+                        {% if equipo.avatar %}
+                            <img src="{{ equipo.avatar.url }}" height="30px" alt="foto avatar">
+                        {% endif %}
+                    </td>
+                    <td>{{ equipo.Ciudad }}</td>
+                    <td>{{ equipo.Provincia }}</td>
+                    <td>{{ equipo.Categoria.Nombre }}</td>
+                    <td>
+                        <form action= "{% url 'detalle_club' equipo.id %}"> <button type="submit">Ver Detalles</button>
+                        </form>
+                        <form action="{% url 'Eliminar Clubes' equipo.id %}" method="post" onsubmit="return confirm ('¿Estás seguro de que deseas eliminar a {{equipo.Nombre|escapejs}}?');">
+                            {% csrf_token %}
+                            <button type="submit">Eliminar</button>
+                        </form>
+                        <form action="{% url 'Editar Clubes' equipo.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Editar</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+      
+{% endblock contenido_que_cambia %}
+

@@ -1,0 +1,30 @@
+{% extends 'padre.html' %}
+
+{% block title %}
+    <title>Lista Usuarios</title>      
+{% endblock title %}
+
+
+{% block contenido_que_cambia %}
+      <h1>Estos son los Users de esta Pagina:</h1> 
+      
+      {% for usuario in usuarios %}
+    <li>
+        {{ usuario }}
+        <form action="{% url 'Ver Usuario' usuario.id %}" method="post">{% csrf_token %}
+            <button type="submit" name="accion" value="ver">Ver</button>
+        </form>
+        <form action="{% url 'Eliminar Usuario' usuario.id %}" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar a {{usuario.Nombre_Usuario}}?');">{% csrf_token %}
+            <button type="submit" name="accion" value="eliminar">Eliminar</button>
+        </form>
+        <form action="{% url 'Editar Usuario' usuario.id %}" method="post">{% csrf_token %}
+            <button type="submit" name="accion" value="editar">Editar</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock contenido_que_cambia %}
+
+
+
+

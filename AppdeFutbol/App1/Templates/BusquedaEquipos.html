@@ -1,0 +1,16 @@
+{% extends 'padre.html' %}
+
+{% block title %}
+    <title>Tu Busqueda</title>      
+{% endblock title %}
+
+
+{% block contenido_que_cambia %}
+<h1>Busca a tu Equipo</h1>
+<form action= "{% url 'Buscar' %}" method="get">
+  <input type="text" name="q" value="{{ request.GET.q }}" placeholder="Buscar...">
+  <button type="submit">Buscar</button>
+</form>
+
+{% endblock contenido_que_cambia %}
+

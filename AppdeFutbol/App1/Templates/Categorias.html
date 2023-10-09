@@ -1,0 +1,16 @@
+{% extends 'padre.html' %}
+
+{% block title %}
+    <title>Categorias</title>      
+{% endblock title %}
+
+
+{% block contenido_que_cambia %}
+      <h1>Estos son las Categorias del Futbol Argentino:</h1> 
+      
+      <ul>
+        {% for categoria in Categorias %}
+            <li>{{ categoria.Nombre }}</li>
+        {% endfor %}
+    </ul>
+{% endblock contenido_que_cambia %}

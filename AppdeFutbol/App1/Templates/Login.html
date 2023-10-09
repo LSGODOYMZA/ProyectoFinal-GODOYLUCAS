@@ -1,0 +1,16 @@
+{% extends 'padre.html' %}
+
+{% block title %}
+    <title>Login</title>      
+{% endblock title %}
+
+
+{% block contenido_que_cambia %}
+<h1>Ingresa a nuestra App:</h1>
+<form action="{% url 'Login' %}" method="post">{% csrf_token %}
+        
+    {{mi_formulario.as_p}}
+
+    <button type="submit">Ingresar</button>
+</form>    
+{% endblock contenido_que_cambia %}

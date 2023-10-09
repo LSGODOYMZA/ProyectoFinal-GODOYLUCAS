@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    <title>Pagina de Futbol</title>
+    {% endblock title %}
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+
+    <style>
+        .btn-cerrar-sesion {
+            margin-left: 15px; /* Ajusta el valor del margen según tus preferencias */
+        }
+        .avatar-btn {
+            margin-left: 0; /* Ajusta el margen izquierdo inicial según tus preferencias */
+            transition: margin-left 0.3s; /* Ajusta la duración de la transición según tus preferencias */
+          }
+          
+        .avatar-btn:hover {
+            margin-left: 10px; /* Ajusta la cantidad de desplazamiento (margen izquierdo) según tus preferencias */
+          }
+          En este ejemplo, utilizamos margin-left en lugar de transform para desplazar el botón "Avatar" hacia la derecha cuando se coloca sobre el botón "Editar Usuario". La propiedad transition se utiliza para suavizar el efecto.
+          
+          Este enfoque puede ser más sencillo y podría funcionar en casos en los que la propiedad transform pueda causar problemas. Asegúrate de ajustar los valores según tus preferencias.
+          
+            
+    </style>
+
+</head>
+<body>
+    <div class="Banner">
+        <a href="{% url 'Inicio' %}">
+        <img src="https://dbdzm869oupei.cloudfront.net/img/vinylrugs/preview/18748.png" alt="imagenbanner">
+    </a><a href="{% url 'Inicio' %}" class="link-sin-subrayado">LA APP DEL FUTBOL ARGENTINO</a>
+        <div class="estrellas-container">
+            <div class="estrella">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Estrella_campeon.png" alt="estrella">
+                <span>78</span>
+            </div>
+            <div class="estrella">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Estrella_campeon.png" alt="estrella">
+                <span>86</span>
+            </div>
+            <div class="estrella">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Estrella_campeon.png" alt="estrella">
+                <span>22</span>
+            </div>
+        </div>
+    </div>
+    <nav class="nav1">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'Inicio' %}">Inicio</a>
+            
+            <div class="dropdown">
+                <a class="navbar-brand">Equipos</a>
+                <div class="dropdown-content">
+                    <a href="{% url 'Equipos' %}">Lista de Equipos</a>
+                    <a href="{% url 'Buscar Equipos' %}">Buscar Equipos</a>
+                    <a href="{% url 'Formulario de Clubes' %}">Crear Equipos</a>
+                </div>
+            </div>
+            <div class="dropdown">
+            <a class="navbar-brand">Categorías</a>
+            <div class="dropdown-content">
+                    <a href="{% url 'Primera A' %}">Primera Division</a>
+                    <a href="{% url 'Nacional B' %}">B Nacional</a>
+                    <a href="{% url 'Metro' %}">B Metropolitana</a>
+                    <a href="{% url 'Federal' %}">Federal A</a>
+                </div>
+            </div>
+            
+            {% if user.is_authenticated %}
+               {% if url_avatar %}
+                <img src="{{url_avatar}}" height="30px" alt="foto avatar">
+               {% endif %}
+               
+                
+                <p>Bienvenido {{user.username}}
+                <a class="btn btn-primary btn-cerrar-sesion" href="{% url 'Editar Perfil' %}">Editar Usuario</a>>  
+                <a class="btn btn-primary btn-cerrar-sesion avatar-btn" href="{% url 'Agregar Avatar' %}">Avatar</a>  
+                <a class="btn btn-primary btn-cerrar-sesion" href="{% url 'Cerrar Sesion' %}">Cerrar Sesion</a>
+            {% else %}
+                <a class="btn btn-primary" href="{% url 'Login' %}">Iniciar Sesion</a> 
+                <a class="btn btn-primary" href="{% url 'Registro' %}">Crear Usuario</a> 
+            {% endif %}
+                
+            
+        </div>
+    </nav>
+    <br>
+    <br>
+    {% block contenido_que_cambia %}
+    <div class="contenido-con-fondo">
+        <div class="texto-esquina">LA MEJOR APP DEL FUTBOL ARGENTINO</div>
+    </div>
+    {% endblock contenido_que_cambia %}
+   
+  
+    <footer>
+        <p>Derechos de autor © 2023 Mi Página Web . <a href="{% url 'AcercaDeMi' %}">Lucas Godoy</a></p>
+    </footer>
+</body>
+</html>

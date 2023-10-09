@@ -1,0 +1,38 @@
+{% extends 'padre.html' %}
+
+{% block title %}
+    <title>Inicio</title>      
+{% endblock title %}
+
+
+{% block contenido_que_cambia %}
+<style>
+    .mensaje-personalizado {
+        font-family: Arial, sans-serif; /* Cambia la fuente a Arial o la que prefieras */
+        font-size: 18px; /* Cambia el tamaño de letra a 18px o el valor que desees */
+    }
+
+    .avatar {
+        width: 30px; /* Tamaño del avatar */
+        height: 30px; /* Tamaño del avatar */
+        vertical-align: middle; /* Alinear verticalmente el avatar al texto */
+        margin-right: 10px; /* Espacio entre el avatar y el texto */
+        border-radius: 50%; /* Para hacer que la imagen del avatar sea circular */
+    }
+</style>
+
+<div class="mensaje-personalizado">
+    {{ mensaje }}
+<!--
+{% if url_avatar %}
+    <img src="{{ url_avatar }}" alt="Avatar" class="avatar">
+{% endif %}
+-->
+</div>
+
+    <br>
+    <div class="contenido-con-fondo">
+        <div class="texto-esquina">LA MEJOR APP DEL FUTBOL ARGENTINO</div>
+    </div>      
+    <h1>Bienvenidos a la mejor Aplicacion del Futbol Argentino</h1>
+{% endblock contenido_que_cambia %}

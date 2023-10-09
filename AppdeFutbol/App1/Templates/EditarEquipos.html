@@ -1,0 +1,14 @@
+{% extends 'padre.html' %}
+
+{% block title %}
+    <title>Editar Equipo</title>      
+{% endblock title %}
+
+
+{% block contenido_que_cambia %}
+<form action="{% url 'Editar Clubes' id %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ mi_formulario.as_p }}
+    <button type="submit">Actualizar</button>
+</form>
+{% endblock contenido_que_cambia %}

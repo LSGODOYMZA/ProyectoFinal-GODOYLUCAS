@@ -1,0 +1,35 @@
+{% extends 'padre.html' %}
+
+{% block title %}
+    <title>User</title>      
+{% endblock title %}
+
+
+{% block contenido_que_cambia %}
+<style>
+    /* Estilos CSS personalizados */
+    h1 {
+        font-size: 24px;
+        color: #333; /* Color de texto: gris oscuro */
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    
+    h3 {
+        font-size: 18px;
+        color: black /* Color de texto: gris medio */
+        margin-bottom: 15px; /* Espacio inferior para separar elementos */
+    }
+
+    .nombre-usuario {
+        color: #FF5733; /* Color naranja */
+    }
+
+    .club {
+        color: #0073e6; /* Color azul */
+    }
+</style>
+
+<h1>Vista en detalle:</h1>
+<h3><span class="nombre-usuario">Nombre Usuario:</span> {{usuario.Nombre_Usuario}}</h3>
+<h3><span class="club">Club:</span> {{usuario.Hincha}}</h3>
+{% endblock contenido_que_cambia %}

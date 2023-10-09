@@ -1,0 +1,16 @@
+{% extends 'padre.html' %}
+
+{% block title %}
+    <title>Crea Tu Users</title>      
+{% endblock title %}
+
+
+{% block contenido_que_cambia %}
+<h1>Crea tu Cuenta en Nuestra Pagina:</h1>
+<form action="{% url 'Registro' %}" method="post">{% csrf_token %}
+        
+    {{mi_formulario.as_p}}
+
+    <button type="submit">Registrarme</button>
+</form>    
+{% endblock contenido_que_cambia %}

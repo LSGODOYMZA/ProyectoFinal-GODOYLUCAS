@@ -1,0 +1,35 @@
+{% extends 'padre.html' %}
+
+{% block title %}
+    <title>Equipo en Detalle</title>      
+{% endblock title %}
+
+
+{% block contenido_que_cambia %}
+<style>
+    /* Estilo para el título h1 */
+    .nombre {
+        color: blue;
+        font-size: 26px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    p {
+        font-size: 18px;
+    }
+
+    /* Estilo para los elementos <span> dentro de los párrafos */
+    p span {
+        font-weight: bold;
+    }
+</style>
+
+<h1 class="nombre">{{ equipo.Nombre }}</h1>
+{% if equipo.avatar %}
+    <img src="{{ equipo.avatar.url }}" alt="{{ club.Nombre }} avatar" width="300">
+{% endif %}
+<p><span>Ciudad:</span> {{ equipo.Ciudad }}</p>
+<p><span>Provincia:</span> {{ equipo.Provincia }}</p>
+<p><span>Categoría:</span> {{ equipo.Categoria.Nombre }}</p>
+<p><span>Fecha de Creación:</span> {{ equipo.fecha_creacion_buenos_aires }}</p>
+{% endblock contenido_que_cambia %}

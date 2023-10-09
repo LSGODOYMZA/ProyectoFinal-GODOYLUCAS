@@ -1,0 +1,16 @@
+{% extends 'padre.html' %}
+
+{% block title %}
+    <title>Crea Tu Club</title>      
+{% endblock title %}
+
+
+{% block contenido_que_cambia %}
+<h1>Crea tu Propio Club de Futbol:</h1>
+<form action="{% url 'Formulario de Clubes' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+        
+    {{mi_formulario.as_p}}
+
+    <button type="submit">Guardar</button>
+</form>    
+{% endblock contenido_que_cambia %}
